@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Space Delivery</string>
+
+    <string name="create_ship">Create Space Ship</string>
 </resources>
