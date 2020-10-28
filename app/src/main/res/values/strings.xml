@@ -9,7 +9,9 @@
     <string name="create_ship_durability">Dayanıklılık</string>
     <string name="create_ship_speed">Hız</string>
     <string name="create_ship_capacity">Kapasite</string>
+    <string name="create_ship_note">* Özelliklerden hiçbiri 0 (Sıfır) olamaz.</string>
     <string name="create_ship_continue_button">Devam Et</string>
+    <string name="create_ship_error">Lütfen bilgileri kontrol ediniz.</string>
 
     
 </resources>

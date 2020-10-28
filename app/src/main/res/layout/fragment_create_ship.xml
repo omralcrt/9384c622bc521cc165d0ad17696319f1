@@ -5,6 +5,10 @@
 
     <data>
 
+        <variable
+            name="viewModel"
+            type="com.omralcorut.spacedelivery.ui.createship.CreateShipViewModel" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -32,11 +36,12 @@
             android:layout_marginEnd="24dp"
             android:background="@drawable/bg_rectangle"
             android:gravity="center"
-            android:text="15"
+            android:text="@{Integer.toString(viewModel.model.remainingPoint)}"
             android:textAppearance="@style/TextAppearance.SpaceDelivery.Subtitle1"
             android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="15" />
 
         <View
             android:id="@+id/view"
@@ -60,6 +65,7 @@
             android:backgroundTint="@color/blue_grey_200"
             android:hint="@string/create_ship_name_hint"
             android:inputType="textPersonName"
+            android:text="@={viewModel.model.shipName}"
             android:textAppearance="@style/TextAppearance.SpaceDelivery.Body1"
             android:textColor="@color/black"
             android:textColorHint="@color/blue_grey_200"
@@ -88,12 +94,33 @@
                 android:textAppearance="@style/TextAppearance.SpaceDelivery.Subtitle1"
                 android:textColor="@color/black" />
 
-            <SeekBar
-                android:id="@+id/durability_seek_bar"
-                style="@style/Widget.SpaceDelivery.SeekBar"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp" />
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <SeekBar
+                    android:id="@+id/durability_seek_bar"
+                    style="@style/Widget.SpaceDelivery.SeekBar"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_weight="1"
+                    android:max="13"
+                    android:progress="@={viewModel.model.durabilityProgress}" />
+
+                <TextView
+                    android:id="@+id/durability_value_text_view"
+                    android:layout_width="20dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@{Integer.toString(viewModel.model.durabilityProgress)}"
+                    android:textAppearance="@style/TextAppearance.SpaceDelivery.Subtitle2"
+                    android:textColor="@color/red_a200" />
+            </LinearLayout>
+
         </LinearLayout>
 
         <LinearLayout
@@ -116,12 +143,32 @@
                 android:textAppearance="@style/TextAppearance.SpaceDelivery.Subtitle1"
                 android:textColor="@color/black" />
 
-            <SeekBar
-                android:id="@+id/speed_seek_bar"
-                style="@style/Widget.SpaceDelivery.SeekBar"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp" />
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <SeekBar
+                    android:id="@+id/speed_seek_bar"
+                    style="@style/Widget.SpaceDelivery.SeekBar"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_weight="1"
+                    android:max="13"
+                    android:progress="@={viewModel.model.speedProgress}" />
+
+                <TextView
+                    android:id="@+id/speed_value_text_view"
+                    android:layout_width="20dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@{Integer.toString(viewModel.model.speedProgress)}"
+                    android:textAppearance="@style/TextAppearance.SpaceDelivery.Subtitle2"
+                    android:textColor="@color/red_a200" />
+            </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
@@ -144,12 +191,63 @@
                 android:textAppearance="@style/TextAppearance.SpaceDelivery.Subtitle1"
                 android:textColor="@color/black" />
 
-            <SeekBar
-                android:id="@+id/capacity_seek_bar"
-                style="@style/Widget.SpaceDelivery.SeekBar"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp" />
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+                <SeekBar
+                    android:id="@+id/capacity_seek_bar"
+                    style="@style/Widget.SpaceDelivery.SeekBar"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_weight="1"
+                    android:max="13"
+                    android:progress="@={viewModel.model.capacityProgress}" />
+                <TextView
+                    android:id="@+id/capacity_value_text_view"
+                    android:layout_width="20dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@{Integer.toString(viewModel.model.capacityProgress)}"
+                    android:textAppearance="@style/TextAppearance.SpaceDelivery.Subtitle2"
+                    android:textColor="@color/red_a200" />
+            </LinearLayout>
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/note_text_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="24dp"
+            android:text="@string/create_ship_note"
+            android:textAppearance="@style/TextAppearance.SpaceDelivery.Caption"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/capacity_layout" />
+
+        <Button
+            android:id="@+id/next_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="32dp"
+            android:backgroundTint="@color/red_a200"
+            android:onClick="@{() -> viewModel.onContinueButtonClicked()}"
+            android:text="@string/create_ship_continue_button"
+            android:textAllCaps="false"
+            android:textAppearance="@style/TextAppearance.SpaceDelivery.Button"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/note_text_view"
+            app:layout_constraintVertical_bias="1.0" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
