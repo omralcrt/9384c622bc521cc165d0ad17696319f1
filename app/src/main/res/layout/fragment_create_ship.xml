@@ -14,11 +14,11 @@
 
         <TextView
             android:id="@+id/distribute_points_text_view"
-            style="@style/TextAppearance.CovidApp.Headline6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:text="@string/create_ship_distribute_points"
+            android:textAppearance="@style/TextAppearance.SpaceDelivery.Headline6"
             android:textColor="@color/black"
             app:layout_constraintBottom_toTopOf="@+id/view"
             app:layout_constraintStart_toStartOf="parent"
@@ -26,7 +26,6 @@
 
         <TextView
             android:id="@+id/remaining_points_text_view"
-            style="@style/TextAppearance.CovidApp.Subtitle1"
             android:layout_width="50dp"
             android:layout_height="40dp"
             android:layout_marginTop="24dp"
@@ -34,6 +33,7 @@
             android:background="@drawable/bg_rectangle"
             android:gravity="center"
             android:text="15"
+            android:textAppearance="@style/TextAppearance.SpaceDelivery.Subtitle1"
             android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -49,5 +49,107 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/remaining_points_text_view" />
+
+        <EditText
+            android:id="@+id/ship_name_edit_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="24dp"
+            android:backgroundTint="@color/blue_grey_200"
+            android:hint="@string/create_ship_name_hint"
+            android:inputType="textPersonName"
+            android:textAppearance="@style/TextAppearance.SpaceDelivery.Body1"
+            android:textColor="@color/black"
+            android:textColorHint="@color/blue_grey_200"
+            android:textCursorDrawable="@null"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view" />
+
+        <LinearLayout
+            android:id="@+id/durability_layout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="24dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ship_name_edit_text">
+
+            <TextView
+                android:id="@+id/durability_text_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/create_ship_durability"
+                android:textAppearance="@style/TextAppearance.SpaceDelivery.Subtitle1"
+                android:textColor="@color/black" />
+
+            <SeekBar
+                android:id="@+id/durability_seek_bar"
+                style="@style/Widget.SpaceDelivery.SeekBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/speed_layout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="24dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/durability_layout">
+
+            <TextView
+                android:id="@+id/speed_text_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/create_ship_speed"
+                android:textAppearance="@style/TextAppearance.SpaceDelivery.Subtitle1"
+                android:textColor="@color/black" />
+
+            <SeekBar
+                android:id="@+id/speed_seek_bar"
+                style="@style/Widget.SpaceDelivery.SeekBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/capacity_layout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="24dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/speed_layout">
+
+            <TextView
+                android:id="@+id/capacity_text_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/create_ship_capacity"
+                android:textAppearance="@style/TextAppearance.SpaceDelivery.Subtitle1"
+                android:textColor="@color/black" />
+
+            <SeekBar
+                android:id="@+id/capacity_seek_bar"
+                style="@style/Widget.SpaceDelivery.SeekBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp" />
+        </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
