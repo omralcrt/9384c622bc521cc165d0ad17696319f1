@@ -2,6 +2,9 @@
     <string name="app_name">Space Delivery</string>
 
     <string name="nav_create_ship">Create Ship</string>
+    <string name="nav_home">Home</string>
+    <string name="nav_stations">Stations</string>
+    <string name="nav_favorites">Favorites</string>
 
     <!-- Create Ship -->
     <string name="create_ship_distribute_points">Dağıtılacak Puan:</string>
@@ -12,6 +15,10 @@
     <string name="create_ship_note">* Özelliklerden hiçbiri 0 (Sıfır) olamaz.</string>
     <string name="create_ship_continue_button">Devam Et</string>
     <string name="create_ship_error">Lütfen bilgileri kontrol ediniz.</string>
+
+    <!-- Home -->
+    <string name="home_stations">İstasyonlar</string>
+    <string name="home_favorites">Favoriler</string>
 
     
 </resources>

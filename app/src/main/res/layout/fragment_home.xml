@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".ui.MainActivity"
+        tools:showIn="@layout/activity_main">
+
+        <fragment
+            android:id="@+id/nav_host_fragment_home"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            app:defaultNavHost="true"
+            app:navGraph="@navigation/home_navigation"
+            tools:ignore="FragmentTagUsage"
+            tools:layout="@layout/fragment_stations" />
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_navigation_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/grey_50"
+            app:elevation="0dp"
+            app:itemIconTint="@drawable/fg_bottom_navigation"
+            app:itemTextAppearanceActive="@style/TextAppearance.SpaceDelivery.Subtitle2"
+            app:itemTextAppearanceInactive="@style/TextAppearance.SpaceDelivery.Subtitle2"
+            app:itemTextColor="@drawable/fg_bottom_navigation"
+            app:labelVisibilityMode="labeled"
+            app:menu="@menu/bottom_navigation_menu" />
+    </LinearLayout>
+</layout>

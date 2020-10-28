@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="AlwaysShowAction">
+    <item
+        android:id="@+id/nav_stations"
+        android:icon="@drawable/ic_ship_line"
+        android:title="@string/home_stations"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/nav_favorites"
+        android:icon="@drawable/ic_favorite"
+        android:title="@string/home_favorites"
+        app:showAsAction="always" />
+</menu>
