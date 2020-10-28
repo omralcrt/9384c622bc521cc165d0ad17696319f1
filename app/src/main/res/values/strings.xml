@@ -1,5 +1,14 @@
 <resources>
     <string name="app_name">Space Delivery</string>
 
-    <string name="create_ship">Create Space Ship</string>
+    <string name="nav_create_ship">Create Ship</string>
+
+    <!-- Create Ship -->
+    <string name="create_ship_distribute_points">Dağıtılacak Puan:</string>
+    <string name="create_ship_durability">Dayanıklılık</string>
+    <string name="create_ship_speed">Hız</string>
+    <string name="create_ship_capacity">Kapasite</string>
+    <string name="create_ship_continue_button">Devam Et</string>
+
+    
 </resources>

@@ -10,18 +10,44 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white"
         tools:context=".ui.createship.CreateShipFragment">
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/distribute_points_text_view"
+            style="@style/TextAppearance.CovidApp.Headline6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Create Space Ship"
+            android:layout_marginStart="24dp"
+            android:text="@string/create_ship_distribute_points"
             android:textColor="@color/black"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/view"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/remaining_points_text_view"
+            style="@style/TextAppearance.CovidApp.Subtitle1"
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/bg_rectangle"
+            android:gravity="center"
+            android:text="15"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="16dp"
+            android:background="@color/blue_grey_200"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/remaining_points_text_view" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
