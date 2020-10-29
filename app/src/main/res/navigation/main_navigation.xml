@@ -12,7 +12,10 @@
         tools:layout="@layout/fragment_create_ship">
         <action
             android:id="@+id/action_create_ship_to_home"
-            app:destination="@id/nav_home" />
+            app:destination="@id/nav_home"
+            app:launchSingleTop="true"
+            app:popUpTo="@+id/main_navigation"
+            app:popUpToInclusive="true"/>
     </fragment>
 
     <fragment

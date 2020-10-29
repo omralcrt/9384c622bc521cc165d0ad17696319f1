@@ -16,7 +16,7 @@ class CreateShipModel : BaseObservable() {
         get() = field
 
     @Bindable
-    var remainingPoint: Int = 0
+    var remainingPoint: Int = 15
         set(value) {
             field = value
             notifyPropertyChanged(BR.remainingPoint)
@@ -24,7 +24,7 @@ class CreateShipModel : BaseObservable() {
         get() = field
 
     @Bindable
-    var durabilityProgress: Int = 5
+    var durabilityProgress: Int = 0
         set(value) {
             val newDistributedPoints = distributedPoint(newDurabilityProgress = value)
             field = calculateNewValue(newDistributedPoints, value)
@@ -33,7 +33,7 @@ class CreateShipModel : BaseObservable() {
         get() = field
 
     @Bindable
-    var speedProgress: Int = 5
+    var speedProgress: Int = 0
         set(value) {
             val newDistributedPoints = distributedPoint(newSpeedProgress = value)
             field = calculateNewValue(newDistributedPoints, value)
@@ -42,7 +42,7 @@ class CreateShipModel : BaseObservable() {
         get() = field
 
     @Bindable
-    var capacityProgress: Int = 5
+    var capacityProgress: Int = 0
         set(value) {
             val newDistributedPoints = distributedPoint(newCapacityProgress = value)
             field = calculateNewValue(newDistributedPoints, value)
