@@ -15,6 +15,7 @@ class StationsViewModel @ViewModelInject constructor(
     private val stationRepository: StationRepository,
 ) : ViewModel() {
     val ship: MutableLiveData<Ship> = shipRepository.ship
+    var currentStation = MutableLiveData<Station>()
     val stations = MutableLiveData<State<List<Station>>>()
 
     init {
@@ -22,6 +23,12 @@ class StationsViewModel @ViewModelInject constructor(
             stationRepository.getStations().collect {
                 stations.value = it
             }
+        }
+    }
+
+    fun updateCurrentStation(station: Station) {
+        viewModelScope.launch {
+            currentStation = MutableLiveData(station)
         }
     }
 }

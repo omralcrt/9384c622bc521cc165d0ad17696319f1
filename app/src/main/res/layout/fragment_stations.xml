@@ -110,5 +110,18 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/remaining_points_text_view" />
+
+        <TextView
+            android:id="@+id/current_station_name_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@{viewModel.currentStation.name}"
+            android:textAppearance="@style/TextAppearance.SpaceDelivery.Headline4"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/viewPager"
+            tools:text="Dünya" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

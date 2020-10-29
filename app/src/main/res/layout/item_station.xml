@@ -7,7 +7,7 @@
 
         <variable
             name="station"
-            type="com.omralcorut.spacedelivery.db.entity.Station" />
+            type="com.omralcorut.spacedelivery.model.TargetStation" />
 
     </data>
 
@@ -25,7 +25,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:text="@{String.format(@string/stations_capacity_stock, station.capacity, station.stock)}"
+            android:text="@{String.format(@string/stations_capacity_stock, station.targetStation.capacity, station.targetStation.stock)}"
             android:textAppearance="@style/TextAppearance.SpaceDelivery.Body2"
             android:textColor="@color/black"
             app:layout_constraintStart_toStartOf="parent"
@@ -38,6 +38,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
+            android:text="@{String.format(@string/stations_station_eus, station.eus)}"
             android:textAppearance="@style/TextAppearance.SpaceDelivery.Body2"
             android:textColor="@color/black"
             app:layout_constraintStart_toStartOf="parent"
@@ -51,7 +52,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="16dp"
-            android:text="@{station.name}"
+            android:text="@{station.targetStation.name}"
             android:textAppearance="@style/TextAppearance.SpaceDelivery.Headline6"
             android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"

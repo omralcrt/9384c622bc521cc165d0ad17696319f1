@@ -14,18 +14,16 @@ abstract class NetworkBoundRepository<RESULT, REQUEST> {
 
         emit(State.loading())
 
-        emit(State.success(fetchFromLocal().first()))
+        if (isLocalEmpty()) {
+            val apiResponse = fetchFromRemote()
 
-        val apiResponse = fetchFromRemote()
+            val remoteData = apiResponse.body()
 
-        val remoteData = apiResponse.body()
-
-        if (apiResponse.isSuccessful && remoteData != null) {
-            if (isLocalEmpty()) {
+            if (apiResponse.isSuccessful && remoteData != null) {
                 saveRemoteData(remoteData)
+            } else {
+                emit(State.error(apiResponse.message()))
             }
-        } else {
-            emit(State.error(apiResponse.message()))
         }
 
         emitAll(
@@ -42,7 +40,7 @@ abstract class NetworkBoundRepository<RESULT, REQUEST> {
     protected abstract suspend fun saveRemoteData(response: REQUEST)
 
     @MainThread
-    protected abstract fun fetchFromLocal(): Flow<RESULT>
+    protected abstract suspend fun fetchFromLocal(): Flow<RESULT>
 
     @MainThread
     protected abstract suspend fun isLocalEmpty(): Boolean

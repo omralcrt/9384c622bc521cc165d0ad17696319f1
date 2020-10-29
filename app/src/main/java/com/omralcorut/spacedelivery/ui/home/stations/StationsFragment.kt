@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.viewpager2.widget.ViewPager2
 import com.omralcorut.spacedelivery.R
 import com.omralcorut.spacedelivery.databinding.FragmentStationsBinding
 import com.omralcorut.spacedelivery.model.State
@@ -25,7 +24,9 @@ class StationsFragment : Fragment(R.layout.fragment_stations) {
 
         stationsViewModel.stations.observe(viewLifecycleOwner, { state ->
             if (state is State.Success) {
-                stationAdapter.addAll(state.data)
+                val currentStation = state.data.first { it.id == stationsViewModel.ship.value!!.stationId }
+                stationAdapter.addAll(state.data, currentStation)
+                stationsViewModel.updateCurrentStation(currentStation)
             }
         })
     }

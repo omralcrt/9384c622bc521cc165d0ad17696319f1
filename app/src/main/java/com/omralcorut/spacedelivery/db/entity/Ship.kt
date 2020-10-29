@@ -15,6 +15,5 @@ data class Ship(
     @ColumnInfo(name = "spacesuit_count") val spacesuitCount: Int? = null,
     @ColumnInfo(name = "universal_space_time") val universalSpaceTime: Int? = null,
     @ColumnInfo(name = "durability_period") val durabilityPeriod: Int? = null,
-    @ColumnInfo(name = "coordinate_x") val coordinateX: Int = 0,
-    @ColumnInfo(name = "coordinate_y") val coordinateY: Int = 0,
+    @ColumnInfo(name = "station_id") val stationId: Int = 1,
 )

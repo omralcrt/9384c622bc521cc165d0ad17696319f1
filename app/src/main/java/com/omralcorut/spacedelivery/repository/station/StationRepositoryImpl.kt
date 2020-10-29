@@ -34,7 +34,7 @@ class StationRepositoryImpl @Inject constructor(
                     )
                 })
 
-            override fun fetchFromLocal(): Flow<List<Station>> = roomDatabase.getStations()
+            override suspend fun fetchFromLocal(): Flow<List<Station>> = roomDatabase.getStations()
 
             override suspend fun isLocalEmpty(): Boolean = roomDatabase.getStations().first().isEmpty()
 
