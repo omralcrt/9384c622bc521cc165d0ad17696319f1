@@ -2,11 +2,13 @@ package com.omralcorut.spacedelivery.di.module
 
 import android.content.Context
 import androidx.room.Room
-import com.google.gson.Gson
-import com.google.gson.GsonBuilder
 import com.omralcorut.spacedelivery.BuildConfig
+import com.omralcorut.spacedelivery.api.StationApi
 import com.omralcorut.spacedelivery.db.CacheDatabase
 import com.omralcorut.spacedelivery.db.dao.ShipDao
+import com.omralcorut.spacedelivery.db.dao.StationDao
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -14,6 +16,8 @@ import dagger.hilt.android.components.ApplicationComponent
 import dagger.hilt.android.qualifiers.ApplicationContext
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import retrofit2.Retrofit
+import retrofit2.converter.moshi.MoshiConverterFactory
 import javax.inject.Singleton
 
 @Module
@@ -32,11 +36,8 @@ class AppModule {
     fun provideShipDao(database: CacheDatabase): ShipDao = database.shipDao()
 
     @Provides
-    fun provideGson(): Gson {
-        return GsonBuilder()
-            .setLenient()
-            .create()
-    }
+    fun provideStationDao(database: CacheDatabase): StationDao = database.stationDao()
+
 
     @Provides
     fun providesOkHttpClient(): OkHttpClient {
@@ -46,5 +47,19 @@ class AppModule {
         return OkHttpClient.Builder()
             .addInterceptor(loggingInterceptor)
             .build()
+    }
+
+    @Provides
+    fun provideStationApiService(okHttpClient: OkHttpClient): StationApi {
+        return Retrofit.Builder()
+            .baseUrl("https://run.mocky.io/v3/")
+            .addConverterFactory(
+                MoshiConverterFactory.create(
+                    Moshi.Builder().add(KotlinJsonAdapterFactory()).build()
+                )
+            )
+            .client(okHttpClient)
+            .build()
+            .create(StationApi::class.java)
     }
 }
