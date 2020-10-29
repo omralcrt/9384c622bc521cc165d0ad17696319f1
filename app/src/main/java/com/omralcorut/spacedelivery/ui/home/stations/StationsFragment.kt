@@ -16,5 +16,6 @@ class StationsFragment : Fragment(R.layout.fragment_stations) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val binding = FragmentStationsBinding.bind(view)
+        binding.viewModel = stationsViewModel
     }
 }

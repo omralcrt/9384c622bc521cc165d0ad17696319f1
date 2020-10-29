@@ -20,5 +20,12 @@
     <string name="home_stations">İstasyonlar</string>
     <string name="home_favorites">Favoriler</string>
 
+    <!-- Stations -->
+    <string name="stations_ugs">UGS: %1$d</string>
+    <string name="stations_eus">EUS: %1$d</string>
+    <string name="stations_ds">DS: %1$d</string>
+    <string name="stations_station_eus">%1$dEUS</string>
+    <string name="stations_travel">Travel</string>
+
     
 </resources>
