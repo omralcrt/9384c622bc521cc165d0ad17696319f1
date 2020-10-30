@@ -3,13 +3,13 @@ package com.omralcorut.spacedelivery.ui.home.stations
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.omralcorut.spacedelivery.R
 import com.omralcorut.spacedelivery.databinding.ItemStationBinding
 import com.omralcorut.spacedelivery.db.entity.Ship
 import com.omralcorut.spacedelivery.db.entity.Station
 import com.omralcorut.spacedelivery.model.TargetStation
+import com.omralcorut.spacedelivery.utils.calculateEus
 import kotlin.math.pow
 import kotlin.math.sqrt
 
@@ -42,12 +42,12 @@ class StationPagerAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val targetStation = stations[position]
         holder.binding.station =
-            TargetStation(targetStation = targetStation, eus = calculateEus(targetStation))
+            TargetStation(targetStation = targetStation, eus = calculateEus(currentStation, targetStation))
         holder.binding.travelVisibility = travelVisibility(targetStation)
 
         holder.binding.travelButton.setOnClickListener {
             if (hasEnoughTime(targetStation)) {
-                travelStation(targetStation, calculateEus(targetStation))
+                travelStation(targetStation, calculateEus(currentStation, targetStation))
             } else {
                 AlertDialog.Builder(holder.itemView.context)
                     .setTitle(R.string.stations_enough_time_dialog_title)
@@ -58,18 +58,10 @@ class StationPagerAdapter(
         }
     }
 
-    private fun calculateEus(targetStation: Station): Int {
-        return sqrt(
-            (targetStation.coordinateX.toDouble() - currentStation.coordinateX).pow(2) + (targetStation.coordinateY.toDouble() - currentStation.coordinateY).pow(
-                2
-            )
-        ).toInt()
-    }
-
     private fun travelVisibility(station: Station): Boolean = station.need != 0
 
     private fun hasEnoughTime(station: Station): Boolean =
-        ship.universalSpaceTime!! > calculateEus(station)
+        ship.universalSpaceTime!! > calculateEus(currentStation, station)
 
     override fun getItemCount(): Int = stations.size
 

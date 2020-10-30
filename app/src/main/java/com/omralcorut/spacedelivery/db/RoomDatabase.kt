@@ -10,7 +10,10 @@ interface RoomDatabase {
     suspend fun updateShip(ship: Ship)
 
     fun getStations(): Flow<List<Station>>
+    fun getActiveStations(): Flow<List<Station>>
     suspend fun insertStations(stations: List<Station>)
     fun getStationByName(name: String): Flow<Station>
     suspend fun updateStation(station: Station)
+
+    suspend fun clearData()
 }

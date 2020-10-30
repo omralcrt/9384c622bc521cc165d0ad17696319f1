@@ -35,5 +35,12 @@
     <string name="stations_enough_time_dialog_description">Bu gezegene seyahat edebilmeniz için gerekli süre kalmadı.</string>
     <string name="stations_enough_time_dialog_ok_button">Tamam</string>
 
+    <string name="stations_game_over_dialog_title">Oyun bitti!</string>
+    <string name="stations_game_over_dialog_spacesuit_over_message">Yeterli uzay giysiniz kalmadı.</string>
+    <string name="stations_game_over_dialog_eus_over_message">Yeterli evrensel uzay süreniz kalmadı.</string>
+    <string name="stations_game_over_dialog_damage_capacity_over_message">Yeterli hasar kapasiteniz kalmadı.</string>
+    <string name="stations_game_over_dialog_game_over_message">Tebrikler! Uzay giysilerinin hepsini dağıtmayı başardınız.</string>
+    <string name="stations_game_over_dialog_ok_button">Kapat</string>
+
     
 </resources>

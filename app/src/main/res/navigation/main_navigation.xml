@@ -23,6 +23,12 @@
         android:name="com.omralcorut.spacedelivery.ui.home.HomeFragment"
         android:label="@string/nav_home"
         tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_home_to_create_ship"
+            app:destination="@id/nav_create_ship"
+            app:launchSingleTop="true"
+            app:popUpTo="@+id/main_navigation"
+            app:popUpToInclusive="true"/>
     </fragment>
 
 </navigation>

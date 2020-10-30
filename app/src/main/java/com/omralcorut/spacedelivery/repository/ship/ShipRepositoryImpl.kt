@@ -1,6 +1,5 @@
 package com.omralcorut.spacedelivery.repository.ship
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.asLiveData
 import com.omralcorut.spacedelivery.db.RoomDatabase
@@ -20,6 +19,7 @@ class ShipRepositoryImpl @Inject constructor(
         this.ship = shipFlow.asLiveData() as MutableLiveData<Ship>
         return shipFlow
     }
+
     override suspend fun insertShip(ship: Ship) {
         roomDatabase.insertShip(ship)
         this.ship = MutableLiveData(ship)
@@ -27,12 +27,17 @@ class ShipRepositoryImpl @Inject constructor(
 
     override suspend fun updateShip(eus: Int, needStock: Int, locationName: String) {
         val updatedShip = roomDatabase.getShip().first()
-        updatedShip.damageCapacity = ship.value!!.universalSpaceTime!!-((eus*10000)/ship.value!!.durabilityPeriod!!)
-        updatedShip.spacesuitCount = ship.value!!.spacesuitCount!!-needStock
-        updatedShip.universalSpaceTime = ship.value!!.universalSpaceTime!!-eus
+        updatedShip.damageCapacity =
+            ship.value!!.universalSpaceTime!! - ((eus * 10000) / ship.value!!.durabilityPeriod!!)
+        updatedShip.spacesuitCount = ship.value!!.spacesuitCount!! - needStock
+        updatedShip.universalSpaceTime = ship.value!!.universalSpaceTime!! - eus
         updatedShip.stationName = locationName
 
         this.ship.value = updatedShip
         roomDatabase.updateShip(updatedShip)
+    }
+
+    override suspend fun clearData() {
+        roomDatabase.clearData()
     }
 }

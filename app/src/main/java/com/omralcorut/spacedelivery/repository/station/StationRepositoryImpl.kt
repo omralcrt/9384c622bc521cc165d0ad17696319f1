@@ -43,6 +43,8 @@ class StationRepositoryImpl @Inject constructor(
         }.asFlow()
     }
 
+    override fun getActiveStations(): Flow<List<Station>> = roomDatabase.getActiveStations()
+
     override suspend fun updateStation(locationName: String) {
         val updatedStation = roomDatabase.getStationByName(locationName).first()
         updatedStation.stock = updatedStation.capacity

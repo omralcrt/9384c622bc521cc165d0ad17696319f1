@@ -13,6 +13,9 @@ abstract class StationDao: EntityDao<Station> {
     @Query("select * from station")
     abstract fun getStations(): Flow<List<Station>>
 
+    @Query("select * from station where need > 0")
+    abstract fun getActiveStations(): Flow<List<Station>>
+
     @Query("delete from station")
     abstract suspend fun deleteAll()
 }
