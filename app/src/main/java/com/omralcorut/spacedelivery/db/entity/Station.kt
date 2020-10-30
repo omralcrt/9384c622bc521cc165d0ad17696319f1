@@ -13,4 +13,5 @@ data class Station(
     @ColumnInfo(name = "capacity") val capacity: Int? = null,
     @ColumnInfo(name = "stock") var stock: Int? = null,
     @ColumnInfo(name = "need") var need: Int? = null,
+    @ColumnInfo(name = "favorite") var favorite: Boolean = false,
 )

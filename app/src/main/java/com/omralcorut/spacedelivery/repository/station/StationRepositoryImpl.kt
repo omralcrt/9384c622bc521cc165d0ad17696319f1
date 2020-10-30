@@ -45,10 +45,19 @@ class StationRepositoryImpl @Inject constructor(
 
     override fun getActiveStations(): Flow<List<Station>> = roomDatabase.getActiveStations()
 
+    override fun getFavoriteStations(): Flow<List<Station>> = roomDatabase.getFavoriteStations()
+
     override suspend fun updateStation(locationName: String) {
         val updatedStation = roomDatabase.getStationByName(locationName).first()
         updatedStation.stock = updatedStation.capacity
         updatedStation.need = 0
+
+        roomDatabase.updateStation(updatedStation)
+    }
+
+    override suspend fun favoriteStation(locationName: String) {
+        val updatedStation = roomDatabase.getStationByName(locationName).first()
+        updatedStation.favorite = !updatedStation.favorite
 
         roomDatabase.updateStation(updatedStation)
     }

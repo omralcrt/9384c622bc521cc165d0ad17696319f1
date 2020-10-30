@@ -44,6 +44,12 @@ class StationsViewModel @ViewModelInject constructor(
         }
     }
 
+    fun favoriteStation(station: Station) {
+        viewModelScope.launch {
+            stationRepository.favoriteStation(station.name!!)
+        }
+    }
+
     private fun isGameOver() {
         viewModelScope.launch {
             gameOver.value = when {

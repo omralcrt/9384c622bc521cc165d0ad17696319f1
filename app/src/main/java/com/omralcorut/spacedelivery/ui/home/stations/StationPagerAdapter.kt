@@ -14,7 +14,8 @@ import kotlin.math.pow
 import kotlin.math.sqrt
 
 class StationPagerAdapter(
-    val travelStation: (station: Station, eus: Int) -> Unit
+    val travelStation: (station: Station, eus: Int) -> Unit,
+    val favoriteStation: (station: Station) -> Unit
 ) : RecyclerView.Adapter<StationPagerAdapter.ViewHolder>() {
 
     private val stations: MutableList<Station> = mutableListOf()
@@ -55,6 +56,10 @@ class StationPagerAdapter(
                     .setPositiveButton(R.string.stations_enough_time_dialog_ok_button, null)
                     .show()
             }
+        }
+
+        holder.binding.favoriteButton.setOnClickListener {
+            favoriteStation(stations[position])
         }
     }
 

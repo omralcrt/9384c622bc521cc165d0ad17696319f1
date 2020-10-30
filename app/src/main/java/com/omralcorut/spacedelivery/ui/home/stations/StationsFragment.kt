@@ -17,9 +17,11 @@ class StationsFragment : Fragment(R.layout.fragment_stations) {
 
     private val stationsViewModel: StationsViewModel by viewModels()
 
-    private val stationAdapter = StationPagerAdapter { station, eus ->
+    private val stationAdapter = StationPagerAdapter({ station, eus ->
         stationsViewModel.travelStation(station, eus)
-    }
+    }, { station ->
+        stationsViewModel.favoriteStation(station)
+    })
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -47,7 +49,8 @@ class StationsFragment : Fragment(R.layout.fragment_stations) {
                         R.string.stations_game_over_dialog_ok_button
                     ) { dialog, which ->
                         stationsViewModel.clearData {
-                            parentFragment?.parentFragment?.findNavController()?.navigate(R.id.action_home_to_create_ship)
+                            parentFragment?.parentFragment?.findNavController()
+                                ?.navigate(R.id.action_home_to_create_ship)
                         }
                     }
                     .show()

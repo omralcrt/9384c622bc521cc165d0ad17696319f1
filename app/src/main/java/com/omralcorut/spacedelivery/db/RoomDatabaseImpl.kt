@@ -36,6 +36,8 @@ class RoomDatabaseImpl @Inject constructor(
 
     override fun getActiveStations(): Flow<List<Station>> = stationDao.getActiveStations().distinctUntilChanged()
 
+    override fun getFavoriteStations(): Flow<List<Station>> = stationDao.getFavoriteStations().distinctUntilChanged()
+
     override suspend fun insertStations(stations: List<Station>) {
         cacheDatabase.withTransaction {
             stationDao.deleteAll()

@@ -5,23 +5,19 @@
 
     <data>
 
-        <import type="android.view.View" />
-
         <variable
             name="station"
             type="com.omralcorut.spacedelivery.model.TargetStation" />
-
-        <variable
-            name="travelVisibility"
-            type="boolean" />
 
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginStart="64dp"
-        android:layout_marginEnd="64dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="8dp"
         android:background="@drawable/bg_rectangle">
 
 
@@ -29,13 +25,13 @@
             android:id="@+id/capacity_stock_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
             android:text="@{String.format(@string/stations_capacity_stock, station.targetStation.capacity, station.targetStation.stock)}"
             android:textAppearance="@style/TextAppearance.SpaceDelivery.Body2"
             android:textColor="@color/black"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/eus_text_view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/eus_text_view"
             tools:text="2000/1000" />
 
         <TextView
@@ -43,13 +39,28 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="16dp"
             android:text="@{String.format(@string/stations_station_eus, station.eus)}"
             android:textAppearance="@style/TextAppearance.SpaceDelivery.Body2"
             android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/capacity_stock_text_view"
+            app:layout_constraintTop_toBottomOf="@+id/name_text_view"
             tools:text="242EUS" />
+
+        <TextView
+            android:id="@+id/name_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@{station.targetStation.name}"
+            android:textAppearance="@style/TextAppearance.SpaceDelivery.Headline6"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Dünya" />
 
         <ImageButton
             android:id="@+id/favorite_button"
@@ -57,44 +68,9 @@
             android:layout_height="30dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
-            android:background="@{station.targetStation.favorite ? @drawable/ic_filled_favorite : @drawable/ic_favorite}"
+            android:background="@drawable/ic_filled_favorite"
             android:backgroundTint="@color/red_a200"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:background="@drawable/ic_favorite" />
-
-        <TextView
-            android:id="@+id/name_text_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="16dp"
-            android:text="@{station.targetStation.name}"
-            android:textAppearance="@style/TextAppearance.SpaceDelivery.Headline6"
-            android:textColor="@color/black"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/eus_text_view"
-            tools:text="Dünya" />
-
-        <Button
-            android:id="@+id/travel_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
-            android:backgroundTint="@color/red_a200"
-            android:text="@string/stations_travel"
-            android:textAllCaps="false"
-            android:textAppearance="@style/TextAppearance.SpaceDelivery.Button"
-            android:textColor="@color/white"
-            android:visibility="@{travelVisibility ? View.VISIBLE : View.INVISIBLE, default=visible}"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/name_text_view" />
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

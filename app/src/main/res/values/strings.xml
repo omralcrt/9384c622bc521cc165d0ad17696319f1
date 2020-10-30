@@ -42,5 +42,8 @@
     <string name="stations_game_over_dialog_game_over_message">Tebrikler! Uzay giysilerinin hepsini dağıtmayı başardınız.</string>
     <string name="stations_game_over_dialog_ok_button">Kapat</string>
 
+    <!-- Favorites -->
+    <string name="favorites_title">Favoriler</string>
+
     
 </resources>

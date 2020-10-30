@@ -11,6 +11,7 @@ interface RoomDatabase {
 
     fun getStations(): Flow<List<Station>>
     fun getActiveStations(): Flow<List<Station>>
+    fun getFavoriteStations(): Flow<List<Station>>
     suspend fun insertStations(stations: List<Station>)
     fun getStationByName(name: String): Flow<Station>
     suspend fun updateStation(station: Station)
