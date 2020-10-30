@@ -26,12 +26,26 @@ class RoomDatabaseImpl @Inject constructor(
         }
     }
 
+    override suspend fun updateShip(ship: Ship) {
+        cacheDatabase.withTransaction {
+            shipDao.update(ship)
+        }
+    }
+
     override fun getStations(): Flow<List<Station>> = stationDao.getStations().distinctUntilChanged()
 
     override suspend fun insertStations(stations: List<Station>) {
         cacheDatabase.withTransaction {
             stationDao.deleteAll()
             stationDao.insert(stations)
+        }
+    }
+
+    override fun getStationByName(name: String): Flow<Station> = stationDao.getStation(name).distinctUntilChanged()
+
+    override suspend fun updateStation(station: Station) {
+        cacheDatabase.withTransaction {
+            stationDao.update(station)
         }
     }
 }

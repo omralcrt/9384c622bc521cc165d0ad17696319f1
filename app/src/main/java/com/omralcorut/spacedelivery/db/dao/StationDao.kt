@@ -7,6 +7,9 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 abstract class StationDao: EntityDao<Station> {
+    @Query("select * from station where name = :name")
+    abstract fun getStation(name: String): Flow<Station>
+
     @Query("select * from station")
     abstract fun getStations(): Flow<List<Station>>
 

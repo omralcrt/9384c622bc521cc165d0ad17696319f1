@@ -11,9 +11,9 @@ data class Ship(
     @ColumnInfo(name = "durability") val durability: Int? = null,
     @ColumnInfo(name = "speed") val speed: Int? = null,
     @ColumnInfo(name = "capacity") val capacity: Int? = null,
-    @ColumnInfo(name = "damage_capacity") val damageCapacity: Int = 100,
-    @ColumnInfo(name = "spacesuit_count") val spacesuitCount: Int? = null,
-    @ColumnInfo(name = "universal_space_time") val universalSpaceTime: Int? = null,
+    @ColumnInfo(name = "damage_capacity") var damageCapacity: Int = 100,
+    @ColumnInfo(name = "spacesuit_count") var spacesuitCount: Int? = null,
+    @ColumnInfo(name = "universal_space_time") var universalSpaceTime: Int? = null,
     @ColumnInfo(name = "durability_period") val durabilityPeriod: Int? = null,
-    @ColumnInfo(name = "station_id") val stationId: Int = 1,
+    @ColumnInfo(name = "station_name") var stationName: String = "Dünya",
 )

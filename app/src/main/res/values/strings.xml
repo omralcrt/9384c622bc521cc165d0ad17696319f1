@@ -31,6 +31,9 @@
     <string name="stations_capacity_stock">%1$d/%2$d</string>
     <string name="stations_station_eus">%1$d EUS</string>
     <string name="stations_travel">Travel</string>
+    <string name="stations_enough_time_dialog_title">Yeterli zaman kalmadı</string>
+    <string name="stations_enough_time_dialog_description">Bu gezegene seyahat edebilmeniz için gerekli süre kalmadı.</string>
+    <string name="stations_enough_time_dialog_ok_button">Tamam</string>
 
     
 </resources>

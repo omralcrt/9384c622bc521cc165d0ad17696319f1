@@ -31,4 +31,11 @@ class StationsViewModel @ViewModelInject constructor(
             currentStation.value = station
         }
     }
+
+    fun travelStation(station: Station, eus: Int) {
+        viewModelScope.launch {
+            shipRepository.updateShip(eus, station.need!!, station.name!!)
+            stationRepository.updateStation(station.name)
+        }
+    }
 }

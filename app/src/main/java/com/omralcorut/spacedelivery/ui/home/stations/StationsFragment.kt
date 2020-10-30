@@ -14,7 +14,9 @@ class StationsFragment : Fragment(R.layout.fragment_stations) {
 
     private val stationsViewModel: StationsViewModel by viewModels()
 
-    private val stationAdapter = StationPagerAdapter()
+    private val stationAdapter = StationPagerAdapter { station, eus ->
+        stationsViewModel.travelStation(station, eus)
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -25,8 +27,8 @@ class StationsFragment : Fragment(R.layout.fragment_stations) {
 
         stationsViewModel.stations.observe(viewLifecycleOwner, { state ->
             if (state is State.Success) {
-                val currentStation = state.data.first { it.id == stationsViewModel.ship.value!!.stationId }
-                stationAdapter.addAll(state.data, currentStation)
+                val currentStation = state.data.first { it.name == stationsViewModel.ship.value!!.stationName }
+                stationAdapter.addAll(state.data, currentStation, stationsViewModel.ship.value!!)
                 stationsViewModel.updateCurrentStation(currentStation)
             }
         })
