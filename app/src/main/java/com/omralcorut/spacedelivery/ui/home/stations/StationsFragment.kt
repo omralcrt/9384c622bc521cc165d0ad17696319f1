@@ -20,6 +20,7 @@ class StationsFragment : Fragment(R.layout.fragment_stations) {
         super.onViewCreated(view, savedInstanceState)
         val binding = FragmentStationsBinding.bind(view)
         binding.viewModel = stationsViewModel
+        binding.lifecycleOwner = this
         binding.viewPager.adapter = stationAdapter
 
         stationsViewModel.stations.observe(viewLifecycleOwner, { state ->

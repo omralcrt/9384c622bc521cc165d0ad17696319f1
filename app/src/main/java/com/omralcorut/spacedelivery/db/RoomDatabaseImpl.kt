@@ -20,6 +20,7 @@ class RoomDatabaseImpl @Inject constructor(
 
     override suspend fun insertShip(ship: Ship) {
         cacheDatabase.withTransaction {
+            stationDao.deleteAll()
             shipDao.deleteAll()
             shipDao.insert(ship)
         }

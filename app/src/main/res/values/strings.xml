@@ -15,6 +15,10 @@
     <string name="create_ship_note">* Özelliklerden hiçbiri 0 (Sıfır) olamaz.</string>
     <string name="create_ship_continue_button">Devam Et</string>
     <string name="create_ship_error">Lütfen bilgileri kontrol ediniz.</string>
+    <string name="create_ship_has_game_dialog_title">Bitmemiş oyun bulundu</string>
+    <string name="create_ship_has_game_dialog_description">Henüz tamamlanmamış bir oyununuz var. Devam etmek ister misiniz?</string>
+    <string name="create_ship_has_game_dialog_continue_button">Devam Et</string>
+    <string name="create_ship_has_game_dialog_cancel_button">İptal</string>
 
     <!-- Home -->
     <string name="home_stations">İstasyonlar</string>

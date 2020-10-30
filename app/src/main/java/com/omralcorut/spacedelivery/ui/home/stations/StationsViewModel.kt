@@ -28,7 +28,7 @@ class StationsViewModel @ViewModelInject constructor(
 
     fun updateCurrentStation(station: Station) {
         viewModelScope.launch {
-            currentStation = MutableLiveData(station)
+            currentStation.value = station
         }
     }
 }

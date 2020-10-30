@@ -1,5 +1,6 @@
 package com.omralcorut.spacedelivery.ui.createship
 
+import android.util.Log
 import android.view.View
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.MutableLiveData
@@ -10,6 +11,7 @@ import com.omralcorut.spacedelivery.R
 import com.omralcorut.spacedelivery.db.entity.Ship
 import com.omralcorut.spacedelivery.repository.ship.ShipRepository
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
 class CreateShipViewModel @ViewModelInject constructor(
@@ -41,4 +43,13 @@ class CreateShipViewModel @ViewModelInject constructor(
     private fun getSpacesuitCount() = model.capacityProgress * 10000
     private fun getUniversalSpaceTime() = model.speedProgress * 20
     private fun getDurabilityPeriod() = model.durabilityProgress * 10000
+
+    fun hasGame(action: () -> Unit) {
+        viewModelScope.launch {
+            val ship = shipRepository.getShip()
+            if (ship.first() != null) {
+                action()
+            }
+        }
+    }
 }
